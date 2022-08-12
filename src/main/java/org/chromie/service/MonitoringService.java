@@ -7,6 +7,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.chromie.dto.CollectData;
 import org.chromie.dto.MonitoringData;
 import org.chromie.dto.TimeRound;
+import org.chromie.util.DateUtil;
 
 import java.util.Date;
 import java.util.concurrent.Executors;
@@ -25,17 +26,15 @@ public class MonitoringService {
 
     private String date;
 
-    private long dateStart;
+    long tag = 0;
 
     private static final String DATE_F = "yyMMdd";
 
     private static ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-
-
     public void add(CollectData data){
         init();
-        currentTimeRound.add((System.currentTimeMillis()-dateStart)/1000,data);
+        currentTimeRound.add(DateUtil.getTodayRelativeSeconds(),data);
     }
 
     public String getData(String date){
@@ -52,18 +51,16 @@ public class MonitoringService {
         if (this.currentTimeRound == null || this.date == null || !DateFormatUtils.format(new Date(),DATE_F).equals(this.date)){
             this.currentTimeRound = new TimeRound<>(new MonitoringData(),24,60);
             this.date = DateFormatUtils.format(new Date(),DATE_F);
-
-            try {
-                this.dateStart  = DateUtils.parseDate(date,new String[]{DATE_F}).getTime();
-            } catch (Exception e) {}
+            this.tag = DateUtil.getTodayRelativeSeconds();
             //
             final Runnable handler = new Runnable() {
                 public void run() {
-                    MonitoringData data = currentTimeRound.getData((System.currentTimeMillis()-dateStart)/1000-60);
+                    MonitoringData data = currentTimeRound.getData(tag);
                     //写入文件进行持久化
                     String d = data.getData();
                     LOG.info("持久化...."+d);
-                    System.out.println("持久化...."+d);
+                    System.out.println("持久化...."+tag/60+":"+d);
+                    tag += 60;
                 }
             };
             scheduler.scheduleAtFixedRate(handler, 60, 60, java.util.concurrent.TimeUnit.SECONDS);
