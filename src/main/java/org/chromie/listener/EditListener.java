@@ -10,21 +10,21 @@ import org.chromie.service.MonitoringService;
 import org.jetbrains.annotations.NotNull;
 
 /**
- *
+ * 键盘操作
  * @author liushuai7
  */
 public class EditListener implements DocumentListener {
 
-  @Override
-  public void documentChanged(@NotNull DocumentEvent event) {
+    @Override
+    public void documentChanged(@NotNull DocumentEvent event) {
 
 
-    MonitoringService monitoringService =
-            ApplicationManager.getApplication().getService(MonitoringService.class);
+        MonitoringService monitoringService =
+                ApplicationManager.getApplication().getService(MonitoringService.class);
 
-    CollectData data = new CollectData();
-    data.setW(1);
-    monitoringService.add(data);
-  }
+        CollectData data = new CollectData();
+        data.setW(1);
+        monitoringService.add(data);
+    }
 
 }

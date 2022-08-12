@@ -1,5 +1,6 @@
 package org.chromie.service;
 
+import com.google.gson.Gson;
 import com.intellij.openapi.diagnostic.Logger;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -26,7 +27,7 @@ public class MonitoringService {
 
     private long dateStart;
 
-    private static final String DATE_F = "zzzyyMMdd";
+    private static final String DATE_F = "yyMMdd";
 
     private static ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
@@ -67,7 +68,7 @@ public class MonitoringService {
             };
             scheduler.scheduleAtFixedRate(handler, 60, 60, java.util.concurrent.TimeUnit.SECONDS);
             LOG.info("初始化....");
-            System.out.println("初始化....");
+            System.out.println("初始化...."+ new Gson().toJson(this.currentTimeRound ));
         }
     }
 
