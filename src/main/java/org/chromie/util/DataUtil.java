@@ -3,7 +3,6 @@ package org.chromie.util;
 import org.apache.commons.lang.StringUtils;
 import org.chromie.dto.CollectData;
 import org.chromie.dto.Monitoring;
-import org.chromie.dto.MonitoringData;
 import org.chromie.dto.TimeRound;
 
 /**
