@@ -46,7 +46,7 @@ public class FileUtil {
             for (int i = l; i <= len; i++) {
                 if (i+1 == len){
                     @Nullable VirtualFile finalFile = file;
-                    ApplicationManager.getApplication().runReadAction(new Runnable() {
+                    ApplicationManager.getApplication().runWriteAction(new Runnable() {
                         public void run() {
                             // do whatever you need to do
                             try {
