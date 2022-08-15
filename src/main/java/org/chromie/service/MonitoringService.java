@@ -59,13 +59,11 @@ public class MonitoringService {
                     //写入文件进行持久化
                     String d = data.getData();
                     LOG.info("持久化...."+d);
-                    System.out.println("持久化...."+tag/60+":"+d);
                     tag += 60;
                 }
             };
             scheduler.scheduleAtFixedRate(handler, 60, 60, java.util.concurrent.TimeUnit.SECONDS);
             LOG.info("初始化....");
-            System.out.println("初始化...."+ new Gson().toJson(this.currentTimeRound ));
         }
     }
 

@@ -79,7 +79,6 @@ public class TimeRound<T extends Monitoring> {
             data.add(d);
             if (this.size > 0 ){
                 int l = (int)(time*this.key/86400)%this.size;
-                System.out.println(l+"-----");
                 this.list[l].add(time,d);
             }
         } catch (Exception e) {
@@ -95,7 +94,6 @@ public class TimeRound<T extends Monitoring> {
             return this.data;
         }else{
             int l = (int)(time*this.key/86400)%this.size;
-            System.out.println(l+"-----");
             return list[l].getData(time);
         }
     }
