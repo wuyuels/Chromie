@@ -61,7 +61,7 @@ public class MonitoringService {
       return DataUtil.getRelativeTime(getData(date),(new MonitoringData()).getData());
     }
 
-    private void init() {
+    public void init() {
         //初始化 || 日切
         if (this.currentTimeRound == null || this.date == null || !DateFormatUtils.format(new Date(), DATE_F).equals(this.date)) {
             this.date = DateFormatUtils.format(new Date(), DATE_F);
