@@ -16,8 +16,8 @@ import java.nio.file.Path;
  */
 public class FileUtil {
     public static String getFileData(String date) {
-        VirtualFile fileData = VfsUtil.findFile(getDataPath(date), true);
-        if (fileData == null || fileData.exists()){
+        VirtualFile fileData = VfsUtil.findFile(getDataPath(date), false);
+        if (fileData == null){
             return "";
         }
         try {
@@ -41,7 +41,6 @@ public class FileUtil {
                 text = new StringBuilder(new String(file.contentsToByteArray(), StandardCharsets.UTF_8));
             }
 
-            System.out.printf(text.toString());
             int l = text.toString().split("\n").length;
             for (int i = l; i <= len; i++) {
                 if (i+1 == len){
