@@ -5,11 +5,13 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.util.ThrowableComputable;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.chromie.dto.CollectData;
 import org.chromie.dto.MonitoringData;
 import org.chromie.dto.TimeRound;
+import org.chromie.util.DataUtil;
 import org.chromie.util.DateUtil;
 import org.chromie.util.FileUtil;
 
@@ -51,12 +53,21 @@ public class MonitoringService {
         }
     }
 
+    public int getTotalTime(String date) {
+      return DataUtil.getTotalTime(getData(date),(new MonitoringData()).getData());
+    }
+
+    public int getRelativeTime(String date) {
+      return DataUtil.getRelativeTime(getData(date),(new MonitoringData()).getData());
+    }
+
     private void init() {
         //初始化 || 日切
         if (this.currentTimeRound == null || this.date == null || !DateFormatUtils.format(new Date(), DATE_F).equals(this.date)) {
-            this.currentTimeRound = new TimeRound<>(new MonitoringData(), 24, 60);
             this.date = DateFormatUtils.format(new Date(), DATE_F);
+            this.currentTimeRound = DataUtil.buildData(FileUtil.getFileData(this.date),new TimeRound<>(new MonitoringData(), 24, 60));
             this.tag = DateUtil.getTodayRelativeSeconds();
+            System.out.printf(getTotalTime(date)+"-----"+getRelativeTime(date));
             //
             final Runnable handler = new Runnable() {
                 public void run() {
