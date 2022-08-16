@@ -45,16 +45,16 @@ public class FileUtil {
             for (int i = l; i <= len; i++) {
                 if (i+1 == len){
                     @Nullable VirtualFile finalFile = file;
-                    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-                        public void run() {
-                            // do whatever you need to do
-                            try {
+//                    ApplicationManager.getApplication().runWriteAction(new Runnable() {
+//                        public void run() {
+//                            // do whatever you need to do
+//                            try {
                                 finalFile.setBinaryContent((text+data+"\n").getBytes(StandardCharsets.UTF_8));
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    });
                 }else {
                     text.append(def).append("\n");
                 }

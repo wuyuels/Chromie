@@ -62,26 +62,37 @@ public class MonitoringService {
     }
 
     public void init() {
-        //初始化 || 日切
-        if (this.currentTimeRound == null || this.date == null || !DateFormatUtils.format(new Date(), DATE_F).equals(this.date)) {
-            this.date = DateFormatUtils.format(new Date(), DATE_F);
-            this.currentTimeRound = DataUtil.buildData(FileUtil.getFileData(this.date),new TimeRound<>(new MonitoringData(), 24, 60));
-            this.tag = DateUtil.getTodayRelativeSeconds();
-            System.out.printf(getTotalTime(date)+"-----"+getRelativeTime(date));
-            //
-            final Runnable handler = new Runnable() {
-                public void run() {
-                    MonitoringData data = currentTimeRound.getData(tag);
-                    //写入文件进行持久化
-                    String d = data.getData();
-                    FileUtil.saveData(date, tag / 60, d, (new MonitoringData()).getData());
-                    LOG.info("持久化...." + d);
-                    tag += 60;
-                }
-            };
-            scheduler.scheduleAtFixedRate(handler, 60, 60, java.util.concurrent.TimeUnit.SECONDS);
-            LOG.info("初始化....");
+
+        if (this.currentTimeRound == null || this.date == null) {
+            dataInit();
+            schedulerInit();
         }
+    }
+
+    private void schedulerInit() {
+        //
+        final Runnable handler = new Runnable() {
+            public void run() {
+                MonitoringData data = currentTimeRound.getData(tag);
+                //写入文件进行持久化
+                FileUtil.saveData(date, tag / 60, data.getData(), (new MonitoringData()).getData());
+                LOG.info("持久化...." + data.getData());
+                tag += 60;
+                if ( !DateFormatUtils.format(new Date(), DATE_F).equals(date)){
+                    dataInit();
+                }
+            }
+        };
+        scheduler.scheduleAtFixedRate(handler, 60, 60, java.util.concurrent.TimeUnit.SECONDS);
+    }
+
+    private void dataInit() {
+        //初始化 || 日切
+        this.date = DateFormatUtils.format(new Date(), DATE_F);
+        this.currentTimeRound = DataUtil.buildData(FileUtil.getFileData(this.date),new TimeRound<>(new MonitoringData(), 24, 60));
+        this.tag = DateUtil.getTodayRelativeSeconds();
+        System.out.printf(getTotalTime(date)+"-----"+getRelativeTime(date));
+        LOG.info("初始化....");
     }
 
 }
