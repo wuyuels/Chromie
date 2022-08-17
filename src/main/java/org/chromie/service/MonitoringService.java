@@ -1,13 +1,8 @@
 package org.chromie.service;
 
-import com.google.gson.Gson;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.Computable;
-import com.intellij.openapi.util.ThrowableComputable;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
-import org.apache.commons.lang.time.DateUtils;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.chromie.dto.CollectData;
 import org.chromie.dto.MonitoringData;
 import org.chromie.dto.TimeRound;
@@ -16,8 +11,8 @@ import org.chromie.util.DateUtil;
 import org.chromie.util.FileUtil;
 
 import java.util.Date;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * 监控服务
@@ -37,7 +32,8 @@ public class MonitoringService {
 
     private static final String DATE_F = "yyMMdd";
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private static final ScheduledExecutorService scheduler = new ScheduledThreadPoolExecutor(1,
+            new BasicThreadFactory.Builder().namingPattern("chromie-schedule-pool-%d").daemon(true).build());
 
     public void add(CollectData data) {
         init();
@@ -46,6 +42,7 @@ public class MonitoringService {
 
     public String getData(String date) {
         if (date.equals(this.date)) {
+            //当日数据
             return currentTimeRound.getAllStr();
         } else {
             //读取文件中的数据
