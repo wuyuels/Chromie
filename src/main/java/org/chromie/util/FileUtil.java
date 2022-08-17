@@ -59,7 +59,6 @@ public class FileUtil {
                     text.append(def).append("\n");
                 }
             }
-            System.out.printf(text.toString());
         } catch (Exception e) {e.printStackTrace();}
     }
 }
