@@ -2,6 +2,7 @@ package org.chromie.util;
 
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.vfs.*;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,16 +46,15 @@ public class FileUtil {
             for (int i = l; i <= len; i++) {
                 if (i+1 == len){
                     @Nullable VirtualFile finalFile = file;
-//                    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-//                        public void run() {
-//                            // do whatever you need to do
-//                            try {
-                                finalFile.setBinaryContent((text+data+"\n").getBytes(StandardCharsets.UTF_8));
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    });
+                    Runnable runnable = () -> {
+                        try {
+                            finalFile.setBinaryContent((text+data+"\n").getBytes(StandardCharsets.UTF_8));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    };
+                    // 加入任务，由IDE调度任务
+                    WriteCommandAction.runWriteCommandAction(null,runnable);
                 }else {
                     text.append(def).append("\n");
                 }
