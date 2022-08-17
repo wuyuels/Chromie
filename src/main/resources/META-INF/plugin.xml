@@ -30,6 +30,8 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="MyChromie" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+                    factoryClass="org.chromie.view.ChromieBoardWindowFactory"/>
         <applicationService serviceImplementation="org.chromie.service.MonitoringService"/>
         <editorFactoryDocumentListener implementation="org.chromie.listener.EditListener"/>
         <editorFactoryMouseMotionListener implementation="org.chromie.listener.MouseListener"/>
