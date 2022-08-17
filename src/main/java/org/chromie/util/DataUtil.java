@@ -47,6 +47,13 @@ public class DataUtil {
         return 0;
     }
 
+    /**
+     * 持久化数据转对象
+     * @param data
+     * @param currentTimeRound
+     * @return
+     * @param <T>
+     */
     public static <T extends Monitoring> TimeRound<T> buildData(String data, TimeRound<T> currentTimeRound) {
         if (!StringUtils.isEmpty(data)) {
             String[] datas = data.split("\n");
