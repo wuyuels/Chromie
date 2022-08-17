@@ -1,12 +1,9 @@
 package org.chromie.util;
 
-
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.vfs.*;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
@@ -16,6 +13,12 @@ import java.nio.file.Path;
  * @author liushuai7
  */
 public class FileUtil {
+
+    /**
+     * 获取数据
+     * @param date 数据日期
+     * @return
+     */
     public static String getFileData(String date) {
         VirtualFile fileData = VfsUtil.findFile(getDataPath(date), false);
         if (fileData == null){
@@ -31,6 +34,13 @@ public class FileUtil {
         return Path.of("./chromie/"+date+".data");
     }
 
+    /**
+     * 数据持久化，如行数存在跳行，则通过def值进行补充空行。
+     * @param date 日期
+     * @param len 行数
+     * @param data 数据
+     * @param def 默认数据
+     */
     public static void saveData(String date, long len, String data,String def) {
         @Nullable VirtualFile file = VfsUtil.findFile(getDataPath(date), false);
         StringBuilder text  ;
