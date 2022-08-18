@@ -32,10 +32,10 @@ public class HtmlUtil {
         System.out.println(templateEngine.process(html, context));
         return templateEngine.process(html, context);
     }
-
-    public static void main(String[] args) {
-
-        Context context = new Context();
-        HtmlUtil.getHtml("test",context);
-    }
+//
+//    public static void main(String[] args) {
+//
+//        Context context = new Context();
+//        HtmlUtil.getHtml("test",context);
+//    }
 }

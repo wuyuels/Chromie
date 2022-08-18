@@ -7,6 +7,8 @@ import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.uiDesigner.core.GridConstraints;
 import org.chromie.service.MonitoringService;
 import org.chromie.util.DateUtil;
+import org.chromie.util.HtmlUtil;
+import org.thymeleaf.context.Context;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,9 +44,11 @@ public class ChromieWindow {
                 this.myBrowserPanel.add(new JLabel("当前版本不支持jcef", SwingConstants.CENTER));
                 return;
             }
+
+            Context context = new Context();
             JBCefBrowser browser = new JBCefBrowser();
             myBrowserPanel.add(browser.getComponent(),  BorderLayout.CENTER);
-            browser.loadURL("https://www.jd.com");
+            browser.loadHTML(HtmlUtil.getHtml("test",context));
         } catch (Exception e) {
             this.myBrowserPanel.add(new JLabel("当前版本不支持jcef", SwingConstants.CENTER));
         }

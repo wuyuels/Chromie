@@ -4,7 +4,9 @@ plugins {
 }
 
 dependencies {
-    implementation("org.thymeleaf:thymeleaf:3.0.15.RELEASE")
+    implementation("org.thymeleaf:thymeleaf:3.0.15.RELEASE"){
+        exclude("org.slf4j","slf4j-api")
+    }
 }
 
 group = "org.chromie"
