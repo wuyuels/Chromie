@@ -34,7 +34,7 @@ public class ChromieWindow {
         MonitoringService monitoringService =
                 ApplicationManager.getApplication().getService(MonitoringService.class);
         todayCountLabel.setText("今日开发总时长："+monitoringService.getTotalTime(DateUtil.getToday())+"分钟");
-        todayMaxLabel.setText("今日专注最长时长："+monitoringService.getRelativeTime(DateUtil.getToday())+"分钟");
+        todayMaxLabel.setText("今日最长专注时长："+monitoringService.getRelativeTime(DateUtil.getToday())+"分钟");
 
         try {
             // 判断所处的IDEA环境是否支持JCEF
