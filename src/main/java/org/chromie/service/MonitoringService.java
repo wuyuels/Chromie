@@ -85,10 +85,9 @@ public class MonitoringService {
 
     private void dataInit() {
         //初始化 || 日切
-        this.date = DateFormatUtils.format(new Date(), DATE_F);
+        this.date = DateUtil.getToday();
         this.currentTimeRound = DataUtil.buildData(FileUtil.getFileData(this.date),new TimeRound<>(new MonitoringData(), 24, 60));
         this.tag = DateUtil.getTodayRelativeSeconds();
-        System.out.printf(getTotalTime(date)+"-----"+getRelativeTime(date));
         LOG.info("初始化....");
     }
 

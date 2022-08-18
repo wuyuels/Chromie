@@ -21,4 +21,7 @@ public class DateUtil {
         return 0;
     }
 
+    public static String getToday() {
+        return DateFormatUtils.format(new Date(), DATE_F);
+    }
 }
