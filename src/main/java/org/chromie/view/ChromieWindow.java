@@ -1,8 +1,13 @@
 package org.chromie.view;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.uiDesigner.core.GridConstraints;
+import org.chromie.service.MonitoringService;
+import org.chromie.util.DateUtil;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,14 +21,33 @@ public class ChromieWindow {
     private JPanel myToolWindowContent;
     private JPanel myBrowserPanel;
     private JButton RefreshButton;
+    private JLabel todayCountLabel;
+    private JLabel todayMaxLabel;
 
     public ChromieWindow(ToolWindow toolWindow) {
         hideToolWindowButton.addActionListener(e -> toolWindow.hide(null));
-        RefreshButton.addActionListener(e -> toolWindow.hide(null));
+        RefreshButton.addActionListener(e -> RefreshData());
+    }
 
-        JBCefBrowser browser = new JBCefBrowser();
-        myBrowserPanel.add(browser.getComponent(),  BorderLayout.CENTER);
-        browser.loadURL("https://www.jd.com");
+    private void RefreshData() {
+
+        MonitoringService monitoringService =
+                ApplicationManager.getApplication().getService(MonitoringService.class);
+        todayCountLabel.setText("今日开发总时长："+monitoringService.getTotalTime(DateUtil.getToday())+"分钟");
+        todayMaxLabel.setText("今日专注最长时长："+monitoringService.getRelativeTime(DateUtil.getToday())+"分钟");
+
+        try {
+            // 判断所处的IDEA环境是否支持JCEF
+            if (!JBCefApp.isSupported()) {
+                this.myBrowserPanel.add(new JLabel("当前版本不支持jcef", SwingConstants.CENTER));
+                return;
+            }
+            JBCefBrowser browser = new JBCefBrowser();
+            myBrowserPanel.add(browser.getComponent(),  BorderLayout.CENTER);
+            browser.loadURL("https://www.jd.com");
+        } catch (Exception e) {
+            this.myBrowserPanel.add(new JLabel("当前版本不支持jcef", SwingConstants.CENTER));
+        }
     }
 
     public JPanel getContent() {
