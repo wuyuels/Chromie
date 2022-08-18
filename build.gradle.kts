@@ -3,6 +3,10 @@ plugins {
     id("org.jetbrains.intellij") version "1.5.2"
 }
 
+dependencies {
+    implementation("org.thymeleaf:thymeleaf:3.0.15.RELEASE")
+}
+
 group = "org.chromie"
 version = "1.0-SNAPSHOT"
 
