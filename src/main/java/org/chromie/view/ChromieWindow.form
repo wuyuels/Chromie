@@ -21,7 +21,7 @@
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="刷新"/>
+          <text value="Refresh"/>
         </properties>
       </component>
       <component id="a3c40" class="javax.swing.JLabel" binding="todayCountLabel">
@@ -45,7 +45,7 @@
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="关闭"/>
+          <text value="Close"/>
         </properties>
       </component>
       <hspacer id="16738">
