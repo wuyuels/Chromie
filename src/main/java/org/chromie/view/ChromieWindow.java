@@ -36,13 +36,13 @@ public class ChromieWindow {
 
         MonitoringService monitoringService =
                 ApplicationManager.getApplication().getService(MonitoringService.class);
-        todayCountLabel.setText("今日开发总时长："+monitoringService.getTotalTime(DateUtil.getToday())+"分钟");
-        todayMaxLabel.setText("今日最长专注时长："+monitoringService.getRelativeTime(DateUtil.getToday())+"分钟");
+        todayCountLabel.setText("Total time today: "+monitoringService.getTotalTime(DateUtil.getToday())+" minutes");
+        todayMaxLabel.setText("Max focus time today: "+monitoringService.getRelativeTime(DateUtil.getToday())+" minutes");
 
         try {
             // 判断所处的IDEA环境是否支持JCEF
             if (!JBCefApp.isSupported()) {
-                this.myBrowserPanel.add(new JLabel("当前版本不支持jcef", SwingConstants.CENTER));
+                this.myBrowserPanel.add(new JLabel("Jcef components are not supported in the current version", SwingConstants.CENTER));
                 return;
             }
 
@@ -51,7 +51,7 @@ public class ChromieWindow {
             myBrowserPanel.add(browser.getComponent(),  BorderLayout.CENTER);
             browser.loadHTML(HtmlUtil.getHtml("test",context));
         } catch (Exception e) {
-            this.myBrowserPanel.add(new JLabel("当前版本不支持jcef", SwingConstants.CENTER));
+            this.myBrowserPanel.add(new JLabel("Jcef components are not supported in the current version", SwingConstants.CENTER));
         }
     }
 
