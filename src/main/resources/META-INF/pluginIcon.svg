@@ -1,12 +1,85 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32.0845 7.94025V4H24.0203V7.9896H16.029V4H7.91553V7.94025H4V36H16.0044V32.0045C16.0058 30.9457 16.4274 29.9308 17.1766 29.1826C17.9258 28.4345 18.9412 28.0143 20 28.0143C21.0588 28.0143 22.0743 28.4345 22.8234 29.1826C23.5726 29.9308 23.9942 30.9457 23.9956 32.0045V36H36V7.94025H32.0845Z"
-          fill="url(#paint0_linear)"/>
-    <defs>
-        <linearGradient id="paint0_linear" x1="2.94192" y1="4.89955" x2="37.7772" y2="39.7345"
-                        gradientUnits="userSpaceOnUse">
-            <stop offset="0.15937" stop-color="#3BEA62"/>
-            <stop offset="0.5404" stop-color="#3C99CC"/>
-            <stop offset="0.93739" stop-color="#6B57FF"/>
-        </linearGradient>
-    </defs>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="40"
+   height="40"
+   viewBox="0 0 40 40"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   sodipodi:docname="pluginIcon.svg"
+   inkscape:export-filename="sss.svg"
+   inkscape:export-xdpi="30"
+   inkscape:export-ydpi="30"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="9.2779263"
+     inkscape:cx="38.6401"
+     inkscape:cy="13.796186"
+     inkscape:window-width="1462"
+     inkscape:window-height="916"
+     inkscape:window-x="50"
+     inkscape:window-y="136"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="图层1"
+     style="fill:#ff0000">
+    <rect
+       style="fill:#ff99cc;stroke-width:1.21093"
+       id="rect120"
+       width="36"
+       height="36"
+       x="2"
+       y="2" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="图层2"
+     transform="matrix(1,0,0,0.98271096,-1.1141928e-8,0.16550639)">
+    <path
+       sodipodi:type="spiral"
+       style="fill:#99ffcc;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583"
+       id="path338"
+       sodipodi:cx="4.9050112"
+       sodipodi:cy="4.0209684"
+       sodipodi:expansion="1"
+       sodipodi:revolution="3.1922598"
+       sodipodi:radius="3.6295667"
+       sodipodi:argument="-18.467819"
+       sodipodi:t0="0"
+       d="M 4.9050112,4.0209684 C 5.0637215,4.0846792 4.8974324,4.2663395 4.7991197,4.2847555 4.5326983,4.3346617 4.3604498,4.0396764 4.3774371,3.8091855 4.4078234,3.3968914 4.8443939,3.1636455 5.2226856,3.2296073 5.7778439,3.326409 6.0794259,3.9208009 5.9601593,4.4445343 5.8011957,5.1425886 5.0439769,5.5142119 4.3755538,5.3399036 3.5344116,5.1205545 3.0920625,4.1983946 3.3222889,3.3856196 3.601124,2.4012402 4.6893106,1.887811 5.6462515,2.1744592 6.7739733,2.5122641 7.3586928,3.7671086 7.0153075,4.8681002 6.6188556,6.1392386 5.1969532,6.7953847 3.9519879,6.3950518 2.5373793,5.940168 1.8097128,4.3509384 2.2671408,2.9620537 2.7803059,1.403935 4.537053,0.60468078 6.0698174,1.119311 7.7714763,1.6906481 8.6423684,3.6150522 8.0704556,5.2916661 7.601636,6.6660531 6.280111,7.6052964 4.8362558,7.6498838"
+       transform="matrix(3.2322922,0,0,3.0495804,3.2300748,3.7050102)" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.62493px;fill:#ffffff;stroke-width:0.635411"
+       x="6.348022"
+       y="33.640759"
+       id="text394"
+       transform="scale(0.92069984,1.0861303)"><tspan
+         sodipodi:role="line"
+         id="tspan392"
+         style="fill:#ffffff;stroke-width:0.635411"
+         x="6.348022"
+         y="33.640759">chromie</tspan></text>
+  </g>
 </svg>

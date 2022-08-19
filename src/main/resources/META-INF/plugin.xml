@@ -8,20 +8,23 @@
     <name>Chromie</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="5-yue@163.com" url="https://github.com/wuyuels/Chromie">chromie group</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    <description>
+        <![CDATA[
+        The Chromie project is an IDEA plugin that helps fragmented developers organize their work time, improve coding focus, and reduce development anxiety.
   ]]>
     </description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <change-notes>
+        <![CDATA[ <br> 1.0.0: init Project  ]]>
+    </change-notes>
 
     <applicationListeners>
         <listener class="org.chromie.listener.ProjectOpenCloseListener"
