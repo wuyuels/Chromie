@@ -29,6 +29,7 @@ public class ChromieWindow {
     public ChromieWindow(ToolWindow toolWindow) {
         hideToolWindowButton.addActionListener(e -> toolWindow.hide(null));
         RefreshButton.addActionListener(e -> RefreshData());
+        RefreshData();
     }
 
     private void RefreshData() {
