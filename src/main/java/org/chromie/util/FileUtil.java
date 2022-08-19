@@ -1,9 +1,8 @@
 package org.chromie.util;
 
+import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.vfs.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -35,7 +34,8 @@ public class FileUtil {
     }
 
     private static Path getDataPath(String date) {
-        return Path.of("./chromie/" + date + ".data");
+
+        return Path.of(PathManager.getHomePath()+"/chromie/" + date + ".data");
     }
 
     /**
@@ -55,7 +55,7 @@ public class FileUtil {
                     VirtualFile file = file11;
                     StringBuilder text;
                     if (file == null) {
-                        file = VfsUtil.createChildSequent(null, VfsUtil.createDirectories("./chromie"), date, "data");
+                        file = VfsUtil.createChildSequent(null, VfsUtil.createDirectories(PathManager.getHomePath()+"/chromie"), date, "data");
                         text = new StringBuilder();
                         System.out.println(file.getPath());
                     } else {
@@ -78,5 +78,10 @@ public class FileUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getPath(String date) {
+        VirtualFile file11 = VfsUtil.findFile(getDataPath(date), false);
+        return file11.getPath();
     }
 }

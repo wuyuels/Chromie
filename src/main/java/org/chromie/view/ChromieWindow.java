@@ -4,7 +4,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.ui.jcef.JBCefBrowser;
-import com.intellij.uiDesigner.core.GridConstraints;
 import org.chromie.service.MonitoringService;
 import org.chromie.util.DateUtil;
 import org.chromie.util.HtmlUtil;
@@ -45,7 +44,6 @@ public class ChromieWindow {
                 this.myBrowserPanel.add(new JLabel("Jcef components are not supported in the current version", SwingConstants.CENTER));
                 return;
             }
-
             Context context = new Context();
             JBCefBrowser browser = new JBCefBrowser();
             myBrowserPanel.add(browser.getComponent(),  BorderLayout.CENTER);
