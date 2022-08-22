@@ -24,4 +24,8 @@ public class DateUtil {
     public static String getToday() {
         return DateFormatUtils.format(new Date(), DATE_F);
     }
+
+    public static String getDateString(int i) {
+        return DateFormatUtils.format(new Date(System.currentTimeMillis()+i*(86400000)), DATE_F);
+    }
 }
