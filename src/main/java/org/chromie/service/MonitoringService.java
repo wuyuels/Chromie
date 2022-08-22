@@ -10,7 +10,9 @@ import org.chromie.util.DataUtil;
 import org.chromie.util.DateUtil;
 import org.chromie.util.FileUtil;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
@@ -91,4 +93,15 @@ public class MonitoringService {
         LOG.info("初始化....");
     }
 
+    public List<MonitoringData> getBeanData(String date) {
+        if (date.equals(this.date)) {
+            //当日数据
+            return currentTimeRound.getAll();
+        } else {
+            //读取文件中的数据
+            TimeRound<MonitoringData> data = DataUtil.buildData(FileUtil.getFileData(date), new TimeRound<>(new MonitoringData(), 24, 60));
+
+            return data != null ?data.getAll():new ArrayList();
+        }
+    }
 }
