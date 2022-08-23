@@ -28,14 +28,6 @@ public class HtmlUtil {
     }
 
     public static String getHtml(String html,Context context){
-        // 渲染模板 (输出到变量（控制台）)
-        System.out.println(templateEngine.process(html, context));
         return templateEngine.process(html, context);
     }
-//
-//    public static void main(String[] args) {
-//
-//        Context context = new Context();
-//        HtmlUtil.getHtml("test",context);
-//    }
 }

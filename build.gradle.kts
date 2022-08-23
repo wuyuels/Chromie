@@ -10,7 +10,7 @@ dependencies {
 }
 
 group = "org.chromie"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -32,7 +32,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("202")
+        sinceBuild.set("201")
         untilBuild.set("222.*")
     }
 

@@ -19,5 +19,11 @@ public class MonitoringData implements Monitoring{
         return r+"|"+w;
     }
 
+    public int getR() {
+        return r;
+    }
 
+    public int getW() {
+        return w;
+    }
 }
