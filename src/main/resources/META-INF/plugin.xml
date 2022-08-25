@@ -27,7 +27,10 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
     <change-notes>
-        <![CDATA[ <br> 1.0.0: init Project  ]]>
+        <![CDATA[
+        <br> 1.0.0: init Project
+        <br> 1.1.0: fix Bug
+        ]]>
     </change-notes>
 
     <applicationListeners>

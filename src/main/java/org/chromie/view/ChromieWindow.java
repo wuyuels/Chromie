@@ -55,6 +55,7 @@ public class ChromieWindow {
     }
 
     private void initBrowserPanel(MonitoringService monitoringService, String dateStr) {
+        myBrowserPanel.removeAll();
         // 判断所处的IDEA环境是否支持JCEF
         if (JBCefApp.isSupported()) {
             Context context = new Context();
