@@ -18,25 +18,16 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * 监控服务
- *
  * @author liushuai7
  */
 public class MonitoringService {
-
-
     public static final Logger LOG = Logger.getInstance(MonitoringService.class);
-
     private TimeRound<MonitoringData> currentTimeRound;
-
     private String date;
-
     long tag = 0;
-
     private static final String DATE_F = "yyMMdd";
-
     private static final ScheduledExecutorService scheduler = new ScheduledThreadPoolExecutor(1,
             new BasicThreadFactory.Builder().namingPattern("chromie-schedule-pool-%d").daemon(true).build());
-
     public void add(CollectData data) {
         init();
         currentTimeRound.add(DateUtil.getTodayRelativeSeconds(), data);

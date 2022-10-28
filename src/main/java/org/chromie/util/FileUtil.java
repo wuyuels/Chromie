@@ -40,7 +40,6 @@ public class FileUtil {
 
     /**
      * 数据持久化，如行数存在跳行，则通过def值进行补充空行。
-     *
      * @param date 日期
      * @param len  行数
      * @param data 数据
@@ -78,10 +77,5 @@ public class FileUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static String getPath(String date) {
-        VirtualFile file11 = VfsUtil.findFile(getDataPath(date), false);
-        return file11.getPath();
     }
 }

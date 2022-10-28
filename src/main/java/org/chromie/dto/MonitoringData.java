@@ -4,8 +4,6 @@ package org.chromie.dto;
  * @author liushuai7
  */
 public class MonitoringData implements Monitoring{
-    public static final String  R="r";
-    public static final String  W="w";
     int r = 0;
     int w = 0;
     @Override
